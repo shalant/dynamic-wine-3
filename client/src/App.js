@@ -71,10 +71,10 @@ class App extends Component {
         />
         <Route path='/signup' render={() => <Signup />} />
         
-       
+      
         <Route path='/todos' exact component={TodosList} />
         <Route path='/todos/add' exact component={CreateTodo} />
-
+      
 
       </div>
     );

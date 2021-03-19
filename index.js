@@ -12,7 +12,7 @@ require('dotenv').config();
 const PORT = process.env.PORT || 8000;
 // Route requires
 const user = require('./routes/user');
-const todos = require('./routes/todos');
+const todos = require('./routes/api/todos');
 const dotenv = require('dotenv').config();
 
 // MIDDLEWARE
@@ -52,7 +52,7 @@ mongoose
 
       // Routes
       app.use('/api/user', user);
-      app.use('/api/todos', todos)
+      app.use('/todos/add', todos)
 
       if (process.env.NODE_ENV === 'production') {
         app.use(express.static(path.join(__dirname, 'client/build')));
@@ -68,8 +68,9 @@ mongoose
       });
 
       //adding todos routes...
-      const todosRouter = require('./routes/todos');
-      app.use('/todos', todosRouter)
+      //THIS SHIT BOMBS THE LOGIN FUNCTIONALITY!!!
+      //const todosRouter = require('./routes/todos');
+      //app.use('/todos', todosRouter)
 
       // Starting Server
       app.listen(PORT, () => {
